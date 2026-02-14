@@ -1,21 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0a1323;
-  --bg-mid: #0e1a31;
-  --bg-deep: #13213b;
-  --spot-a: #2e1f16;
-  --spot-b: #11303c;
-  --text: #e8effc;
-  --muted: #a9b8d2;
-  --card: #121f36;
-  --line: #2e3f5f;
-  --brand: #ff8b3f;
-  --brand-strong: #ff7420;
-  --brand-soft: #2a2118;
-  --teal: #63d0d0;
-  --navy: #1a3154;
-  --shadow: 0 26px 52px rgba(0, 0, 0, 0.45);
+  --bg: #070b16;
+  --bg-mid: #0c1222;
+  --bg-deep: #121a2f;
+  --spot-a: rgba(255, 122, 30, 0.2);
+  --spot-b: rgba(40, 170, 255, 0.16);
+  --text: #edf3ff;
+  --muted: #9baecf;
+  --card: #121a2d;
+  --card-soft: #17233e;
+  --line: #273755;
+  --brand: #ff8a3d;
+  --brand-strong: #ff6f1f;
+  --brand-soft: #2b1f17;
+  --teal: #63d9d9;
+  --navy: #1e355a;
+  --shadow: 0 24px 44px rgba(0, 0, 0, 0.45);
+  --radius-xl: 1.4rem;
+  --radius-lg: 1.05rem;
 }
 
 * {
@@ -33,9 +36,22 @@ body {
   color: var(--text);
   color-scheme: dark;
   background:
-    radial-gradient(circle at 95% -15%, var(--spot-a) 0, transparent 35%),
-    radial-gradient(circle at -10% 25%, var(--spot-b) 0, transparent 35%),
+    radial-gradient(circle at 90% -10%, var(--spot-a) 0, transparent 35%),
+    radial-gradient(circle at -5% 25%, var(--spot-b) 0, transparent 35%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-mid) 42%, var(--bg-deep) 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(130, 162, 214, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(130, 162, 214, 0.08) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.3;
+  z-index: -1;
 }
 
 a {
@@ -70,28 +86,29 @@ p {
 
 .page-shell {
   padding-bottom: 3rem;
+  position: relative;
 }
 
 .kicker {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.36rem 0.68rem;
+  padding: 0.38rem 0.72rem;
   border-radius: 999px;
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--teal);
-  background: color-mix(in srgb, var(--teal) 14%, var(--card));
-  border: 1px solid color-mix(in srgb, var(--teal) 30%, var(--line));
+  background: color-mix(in srgb, var(--teal) 14%, var(--card-soft));
+  border: 1px solid color-mix(in srgb, var(--teal) 26%, var(--line));
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: 0.75rem;
   border: 1px solid var(--brand);
   background: linear-gradient(135deg, #ff7d2c, var(--brand));
   color: #fff;
@@ -99,9 +116,9 @@ p {
   font-size: 0.92rem;
   line-height: 1.1;
   white-space: nowrap;
-  padding: 0.66rem 1.1rem;
+  padding: 0.68rem 1rem;
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-  box-shadow: 0 10px 22px rgba(255, 106, 19, 0.25);
+  box-shadow: 0 10px 24px rgba(255, 111, 31, 0.32);
 }
 
 .btn:hover {
@@ -121,7 +138,7 @@ p {
 .btn-soft {
   background: var(--card);
   color: var(--brand-strong);
-  border-color: color-mix(in srgb, var(--brand-strong) 25%, var(--line));
+  border-color: color-mix(in srgb, var(--brand-strong) 22%, var(--line));
   box-shadow: none;
 }
 
@@ -138,9 +155,9 @@ p {
   position: sticky;
   top: 0;
   z-index: 70;
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-  background: color-mix(in srgb, var(--bg) 86%, #101a2d 14%);
-  backdrop-filter: blur(12px);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  background: color-mix(in srgb, var(--bg) 82%, #121b2f 18%);
+  backdrop-filter: blur(14px);
 }
 
 .header-main {
@@ -193,17 +210,19 @@ p {
 
 .nav-link {
   padding: 0.46rem 0.76rem;
-  border-radius: 999px;
+  border-radius: 0.68rem;
   border: 1px solid transparent;
   color: var(--muted);
   font-size: 0.9rem;
   font-weight: 500;
+  transition: all 180ms ease;
 }
 
 .nav-link:hover {
-  background: var(--card);
+  background: color-mix(in srgb, var(--card) 78%, #1e2c49);
   color: var(--text);
   border-color: var(--line);
+  transform: translateY(-1px);
 }
 
 .header-cta {
@@ -214,9 +233,9 @@ p {
 
 .phone-chip {
   padding: 0.46rem 0.7rem;
-  border-radius: 999px;
+  border-radius: 0.68rem;
   border: 1px solid var(--line);
-  background: var(--card);
+  background: color-mix(in srgb, var(--card) 80%, #1a2743);
   color: var(--muted);
   font-size: 0.82rem;
   font-weight: 600;
@@ -229,25 +248,44 @@ p {
 .hero-block {
   margin-top: 1.5rem;
   display: grid;
-  grid-template-columns: 1.14fr 0.86fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 1.2rem;
 }
 
 .hero-copy {
-  background: linear-gradient(170deg, var(--card) 0%, color-mix(in srgb, var(--card) 86%, #f7fbff) 100%);
+  background: linear-gradient(165deg, color-mix(in srgb, var(--card) 92%, #1c2a45) 0%, #101a2f 100%);
   border: 1px solid var(--line);
-  border-radius: 1.5rem;
-  padding: 1.35rem;
+  border-radius: var(--radius-xl);
+  padding: 1.45rem;
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-copy::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  right: -110px;
+  top: -120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 135, 62, 0.18) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .hero-copy h1 {
-  font-size: clamp(2rem, 4.1vw, 3.4rem);
-  margin: 0.8rem 0 0.9rem;
+  font-size: clamp(2rem, 4.4vw, 3.8rem);
+  margin: 0.78rem 0 0.92rem;
+  line-height: 1.02;
+  text-wrap: balance;
+  max-width: 15ch;
 }
 
 .hero-copy > p {
   color: var(--muted);
+  max-width: 58ch;
+  font-size: 1.02rem;
 }
 
 .hero-actions {
@@ -266,8 +304,8 @@ p {
 
 .hero-stats article {
   border: 1px solid var(--line);
-  border-radius: 1rem;
-  background: var(--card);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, #17253f, #121f35);
   padding: 0.72rem;
 }
 
@@ -283,20 +321,20 @@ p {
 }
 
 .hero-visual {
-  border-radius: 1.5rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   min-height: 100%;
 }
 
 .hero-radar {
-  padding: 0.85rem;
+  padding: 0.92rem;
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 0.72rem;
   background:
-    radial-gradient(circle at 16% 8%, rgba(255, 156, 96, 0.25), transparent 28%),
-    linear-gradient(160deg, #102746, #183b66);
+    radial-gradient(circle at 16% 8%, rgba(255, 156, 96, 0.2), transparent 32%),
+    linear-gradient(160deg, #101f38, #1a3358);
 }
 
 .hero-radar-head {
@@ -321,16 +359,22 @@ p {
 .hero-radar-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.55rem;
+  gap: 0.62rem;
 }
 
 .radar-card {
   position: relative;
   overflow: hidden;
-  border-radius: 0.95rem;
-  min-height: 152px;
+  border-radius: var(--radius-lg);
+  min-height: 162px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: #0f2743;
+  transition: transform 220ms ease, border-color 220ms ease;
+}
+
+.radar-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 188, 145, 0.5);
 }
 
 .radar-card img {
@@ -345,7 +389,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(7, 18, 35, 0.9), rgba(7, 18, 35, 0.2));
+  background: linear-gradient(to top, rgba(7, 18, 35, 0.94), rgba(7, 18, 35, 0.26));
 }
 
 .radar-copy {
@@ -376,18 +420,19 @@ p {
 }
 
 .radar-link {
-  border-radius: 999px;
+  border-radius: 0.68rem;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.09);
   color: #eff5ff;
   font-size: 0.76rem;
   font-weight: 600;
-  padding: 0.42rem 0.66rem;
-  transition: background 180ms ease;
+  padding: 0.45rem 0.68rem;
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .radar-link:hover {
   background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
 }
 
 .floating-panel {
@@ -428,11 +473,23 @@ p {
 }
 
 .tracks-grid article {
-  border-radius: 1.2rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--line);
   background: var(--card);
-  padding: 1rem;
+  padding: 1.1rem;
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.tracks-grid article::before {
+  content: "";
+  position: absolute;
+  inset: auto auto -50px -40px;
+  width: 180px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(255, 139, 61, 0.18) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .tracks-grid h3 {
@@ -451,9 +508,9 @@ p {
 
 .explorer-shell {
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--card), color-mix(in srgb, var(--card) 88%, #182746));
-  border-radius: 1.4rem;
-  padding: 1rem;
+  background: linear-gradient(180deg, #121f35, #152541);
+  border-radius: var(--radius-xl);
+  padding: 1.1rem;
   box-shadow: var(--shadow);
 }
 
@@ -487,7 +544,7 @@ p {
   color: var(--muted);
   font-weight: 600;
   padding: 0.34rem 0.76rem;
-  border-radius: 999px;
+  border-radius: 0.62rem;
   cursor: pointer;
 }
 
@@ -533,11 +590,12 @@ p {
   border: 1px solid var(--line);
   background: var(--card);
   color: var(--muted);
-  border-radius: 999px;
+  border-radius: 0.62rem;
   font-size: 0.82rem;
   font-weight: 600;
   padding: 0.52rem 0.8rem;
   cursor: pointer;
+  transition: all 180ms ease;
 }
 
 .filter-tabs button.active {
@@ -592,10 +650,17 @@ p {
 .product-tile {
   display: grid;
   grid-template-rows: auto 1fr;
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   overflow: hidden;
   background: var(--card);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.product-tile:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--brand) 36%, var(--line));
+  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.34);
 }
 
 .product-grid.is-list .product-tile {
@@ -612,6 +677,11 @@ p {
   height: 100%;
   min-height: 170px;
   object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.product-tile:hover .tile-media img {
+  transform: scale(1.04);
 }
 
 .tile-body {
@@ -649,7 +719,7 @@ p {
 .tile-actions .btn {
   width: 100%;
   min-height: 2.45rem;
-  border-radius: 0.8rem;
+  border-radius: 0.68rem;
   padding: 0.54rem 0.7rem;
   font-size: 0.84rem;
   box-shadow: none;
@@ -660,14 +730,15 @@ p {
 }
 
 .process-board {
-  border-radius: 1.3rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--line);
-  background: linear-gradient(145deg, #0f2844, #17345b);
+  background: linear-gradient(150deg, #182e4f, #1f3c66);
   color: #e7eef8;
-  padding: 1.1rem;
+  padding: 1.18rem;
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 1rem;
+  box-shadow: var(--shadow);
 }
 
 .process-board h2 {
@@ -688,9 +759,9 @@ p {
 }
 
 .process-board li {
-  border-radius: 0.95rem;
+  border-radius: 0.82rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.09);
   padding: 0.72rem;
   display: grid;
   gap: 0.25rem;
@@ -706,11 +777,11 @@ p {
 }
 
 .trust-panel {
-  border-radius: 1.3rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--line);
   background: var(--card);
   box-shadow: var(--shadow);
-  padding: 1rem;
+  padding: 1.12rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.9rem;
@@ -730,7 +801,7 @@ p {
 }
 
 .trust-panel img {
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   width: 100%;
   object-fit: cover;
   max-height: 360px;
@@ -738,11 +809,25 @@ p {
 
 .page-intro {
   margin-top: 1.6rem;
-  border-radius: 1.3rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--line);
-  background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 88%, #192a48));
+  background: linear-gradient(145deg, #14233d, #1a2c4d);
   box-shadow: var(--shadow);
-  padding: 1.2rem;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-intro::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -80px;
+  top: -100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(106, 230, 230, 0.14) 0%, transparent 72%);
+  pointer-events: none;
 }
 
 .page-intro h1 {
@@ -764,9 +849,9 @@ p {
 
 .badge-row span,
 .badge-row a {
-  border-radius: 999px;
+  border-radius: 0.62rem;
   border: 1px solid var(--line);
-  background: var(--card);
+  background: color-mix(in srgb, var(--card) 84%, #1d2d4a);
   font-size: 0.82rem;
   padding: 0.45rem 0.75rem;
   color: var(--muted);
@@ -792,7 +877,7 @@ p {
 .download-board,
 .enquiry-info,
 .enquiry-form {
-  border-radius: 1.2rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--line);
   background: var(--card);
   box-shadow: var(--shadow);
@@ -810,7 +895,7 @@ p {
 }
 
 .detail-copy-wrap {
-  padding: 1rem;
+  padding: 1.12rem;
 }
 
 .detail-copy-wrap h1 {
@@ -856,7 +941,7 @@ p {
 }
 
 .detail-panel {
-  padding: 1rem;
+  padding: 1.12rem;
 }
 
 .detail-panel h2 {
@@ -912,10 +997,16 @@ p {
 }
 
 .related-links a {
-  border-radius: 0.9rem;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   background: var(--card);
   overflow: hidden;
+  transition: transform 220ms ease, border-color 220ms ease;
+}
+
+.related-links a:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--brand) 34%, var(--line));
 }
 
 .related-links img {
@@ -941,7 +1032,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 1.2rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
@@ -963,7 +1054,7 @@ p {
 }
 
 .value-grid article {
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   background: var(--card);
   box-shadow: var(--shadow);
@@ -993,7 +1084,7 @@ p {
 
 .mosaic-tile {
   display: block;
-  border-radius: 0.9rem;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
@@ -1052,7 +1143,7 @@ p {
 }
 
 .download-item {
-  border-radius: 0.9rem;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   padding: 0.7rem;
   display: flex;
@@ -1124,9 +1215,9 @@ p {
 
 .site-footer {
   margin-top: 2.2rem;
-  background: linear-gradient(180deg, #112846 0%, #0d1f35 100%);
+  background: linear-gradient(180deg, #0e1b31 0%, #081325 100%);
   color: #d4deec;
-  border-top: 1px solid #254162;
+  border-top: 1px solid #223551;
 }
 
 .footer-grid {
@@ -1137,9 +1228,9 @@ p {
 }
 
 .footer-block {
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   padding: 0.85rem;
 }
 
@@ -1167,6 +1258,35 @@ p {
 .footer-bottom p {
   font-size: 0.84rem;
   color: #a9bfd7;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-block,
+.page-intro,
+.section-gap {
+  animation: revealUp 540ms ease both;
+}
+
+.section-gap:nth-of-type(2) {
+  animation-delay: 70ms;
+}
+
+.section-gap:nth-of-type(3) {
+  animation-delay: 120ms;
+}
+
+.section-gap:nth-of-type(4) {
+  animation-delay: 170ms;
 }
 
 @media (max-width: 1020px) {
