@@ -1,65 +1,162 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ProductExplorer } from "@/components/product-explorer";
+import { products, whyChooseUs } from "@/lib/site-data";
 
 export default function Home() {
+  const machineCount = products.filter((item) => item.category === "machines").length;
+  const medicalCount = products.filter((item) => item.category === "medical").length;
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="page-shell">
+      <section className="container hero-block">
+        <div className="hero-copy">
+          <p className="kicker">Electroart Engineering</p>
+          <h1>Build Better Medical And Industrial Equipment With A Faster Product Workflow</h1>
+          <p>
+            From IR and UV drying systems to trolleys, enclosures, and critical machine parts, Electroart helps teams
+            source production-ready products with practical lead times.
           </p>
+
+          <div className="hero-actions">
+            <Link href="/product" className="btn">
+              Start Product Search
+            </Link>
+            <Link href="/enquiry" className="btn btn-soft">
+              Request Quotation
+            </Link>
+          </div>
+
+          <div className="hero-stats">
+            <article>
+              <strong>27+</strong>
+              <span>Years of setup</span>
+            </article>
+            <article>
+              <strong>{products.length}</strong>
+              <span>Active products</span>
+            </article>
+            <article>
+              <strong>2</strong>
+              <span>Solution tracks</span>
+            </article>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="hero-visual hero-radar">
+          <div className="hero-radar-head">
+            <p>Quick Navigation</p>
+            <span>Choose a product family</span>
+          </div>
+
+          <div className="hero-radar-grid">
+            <Link href="/ir-dryer" className="radar-card">
+              <img src="/img/product/ir-dryer/3.jpg" alt="IR Dryer" />
+              <div className="radar-copy">
+                <strong>IR Dryer</strong>
+                <small>Thermal drying line</small>
+              </div>
+            </Link>
+
+            <Link href="/enclosures" className="radar-card">
+              <img src="/img/product/enclosure/1.JPG" alt="Enclosures" />
+              <div className="radar-copy">
+                <strong>Enclosures</strong>
+                <small>Cabinets and housings</small>
+              </div>
+            </Link>
+
+            <Link href="/trolleys" className="radar-card">
+              <img src="/img/product/trolleys/13.JPG" alt="Trolleys" />
+              <div className="radar-copy">
+                <strong>Trolleys</strong>
+                <small>Medical movement systems</small>
+              </div>
+            </Link>
+
+            <Link href="/medical-grade-compressor-for-ventilator" className="radar-card">
+              <img src="/img/product/compressor/compressor-for-vantilator.jpg" alt="Compressor" />
+              <div className="radar-copy">
+                <strong>Compressor</strong>
+                <small>Ventilator-compatible unit</small>
+              </div>
+            </Link>
+          </div>
+
+          <div className="hero-radar-actions">
+            <Link href="/product" className="radar-link">
+              Open Full Catalogue
+            </Link>
+            <Link href="/download" className="radar-link">
+              Download Resources
+            </Link>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="container section-gap tracks-grid">
+        <article>
+          <p className="kicker">Track A</p>
+          <h3>Machines & Fabrication</h3>
+          <p>Dryers, UV meters, machine parts, enclosures, and production-focused components.</p>
+          <strong>{machineCount} products</strong>
+        </article>
+        <article>
+          <p className="kicker">Track B</p>
+          <h3>Medical Equipment Range</h3>
+          <p>Trolleys, covers, carbon products, and medical equipment-ready accessories.</p>
+          <strong>{medicalCount} products</strong>
+        </article>
+      </section>
+
+      <section className="container section-gap">
+        <ProductExplorer
+          products={products}
+          title="Find The Right Product In Seconds"
+          description="Use search and filters to quickly locate the exact product family, then jump directly to details and enquiry."
+          maxItems={8}
+          ctaHref="/product"
+          ctaLabel="Open full catalogue"
+        />
+      </section>
+
+      <section className="container section-gap process-board">
+        <div>
+          <p className="kicker">How Teams Use Electroart</p>
+          <h2>Simple, Clear Product Journey</h2>
+          <p>Designed for teams that need decisions quickly without digging through endless galleries.</p>
+        </div>
+        <ol>
+          <li>
+            <strong>Discover</strong>
+            <span>Search products by use case with filters.</span>
+          </li>
+          <li>
+            <strong>Evaluate</strong>
+            <span>Open detailed pages with full media and videos.</span>
+          </li>
+          <li>
+            <strong>Discuss</strong>
+            <span>Use enquiry form with same workflow fields as existing site.</span>
+          </li>
+          <li>
+            <strong>Deliver</strong>
+            <span>Move to procurement with practical production support.</span>
+          </li>
+        </ol>
+      </section>
+
+      <section className="container section-gap trust-panel">
+        <div>
+          <p className="kicker">Why Electroart</p>
+          <h2>Performance First, Practical Cost</h2>
+          <ul>
+            {whyChooseUs.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <img src="/img/why-choose-us.jpg" alt="Why choose Electroart" />
+      </section>
+    </main>
   );
 }
