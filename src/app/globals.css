@@ -1032,6 +1032,12 @@ p {
   gap: 0.4rem;
 }
 
+@media (max-width: 1020px), (pointer: coarse) {
+  .image-modal-actions {
+    display: none;
+  }
+}
+
 .image-modal-actions button {
   border: 1px solid var(--line);
   border-radius: 0.66rem;
@@ -1259,9 +1265,11 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.8rem;
+  align-items: stretch;
 }
 
-.value-grid article {
+.value-grid article,
+.value-card {
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   background: var(--card);
@@ -1270,7 +1278,7 @@ p {
 }
 
 .value-grid h3 {
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 .value-grid p,
@@ -1281,6 +1289,103 @@ p {
 .value-grid ul {
   margin: 0;
   padding-left: 1rem;
+}
+
+.value-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.72rem;
+  background: linear-gradient(165deg, color-mix(in srgb, var(--card) 90%, #182a48) 0%, #111d33 100%);
+  border-color: color-mix(in srgb, var(--line) 82%, #3c5f8f);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.value-card::before {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  right: -82px;
+  top: -84px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(100, 196, 255, 0.22) 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.36);
+}
+
+.value-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.68rem;
+}
+
+.value-icon {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--brand) 24%, var(--line));
+  background: color-mix(in srgb, var(--card) 72%, #1f385f);
+  color: color-mix(in srgb, var(--teal) 84%, #d8f4ff);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.value-icon svg {
+  width: 1.16rem;
+  height: 1.16rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.value-title-wrap {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.value-sub {
+  margin: 0;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--muted) 82%, #d8e8ff);
+}
+
+.value-copy {
+  color: color-mix(in srgb, var(--text) 76%, var(--muted));
+}
+
+.value-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.34rem;
+}
+
+.value-points li {
+  display: flex;
+  align-items: center;
+  gap: 0.52rem;
+  color: color-mix(in srgb, var(--text) 72%, var(--muted));
+}
+
+.value-points li::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand), var(--teal));
+  flex-shrink: 0;
 }
 
 .mosaic-grid {
@@ -1635,11 +1740,20 @@ p {
   }
 
   .hero-radar-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero-radar-actions {
-    flex-direction: column;
+    flex-direction: row;
+  }
+
+  .radar-card {
+    min-height: 150px;
+  }
+
+  .radar-link {
+    flex: 1 1 calc(50% - 0.24rem);
+    text-align: center;
   }
 
   .image-modal {
@@ -1656,11 +1770,11 @@ p {
   }
 
   .image-modal-actions {
-    width: 100%;
+    display: none;
   }
 
   .image-modal-actions button {
-    flex: 1 1 calc(33.33% - 0.4rem);
+    display: none;
   }
 
   .image-modal-stage {

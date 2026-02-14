@@ -42,6 +42,7 @@ export function ImageModalGallery({ images, altLabel, layout = "media" }: ImageM
   const [isMounted, setIsMounted] = useState(false);
   const stageRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const encodedImages = useMemo(() => images.map((image) => encodeURI(image)), [images]);
   const activeImage = activeIndex === null ? null : encodedImages[activeIndex];
@@ -160,6 +161,28 @@ export function ImageModalGallery({ images, altLabel, layout = "media" }: ImageM
     if (event.deltaY > 0) zoomOut();
   };
 
+  const handleStageTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    const point = event.touches[0];
+    if (!point) return;
+    touchStartRef.current = { x: point.clientX, y: point.clientY };
+    setLens((value) => ({ ...value, active: false }));
+  };
+
+  const handleStageTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    const start = touchStartRef.current;
+    const point = event.changedTouches[0];
+    touchStartRef.current = null;
+    if (!start || !point) return;
+
+    const deltaX = point.clientX - start.x;
+    const deltaY = point.clientY - start.y;
+    const swipeThreshold = 42;
+
+    if (Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+    if (deltaX < 0) nextImage();
+    else prevImage();
+  };
+
   return (
     <>
       <div className={layout === "mosaic" ? "mosaic-grid" : "media-grid"}>
@@ -217,6 +240,8 @@ export function ImageModalGallery({ images, altLabel, layout = "media" }: ImageM
                   onMouseMove={handleStageMouseMove}
                   onMouseLeave={() => setLens((value) => ({ ...value, active: false }))}
                   onWheel={handleStageWheel}
+                  onTouchStart={handleStageTouchStart}
+                  onTouchEnd={handleStageTouchEnd}
                 >
                   <img
                     ref={imageRef}
