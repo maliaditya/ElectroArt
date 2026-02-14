@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ImageModalGallery } from "@/components/image-modal-gallery";
+import { VideoModalGallery } from "@/components/video-modal-gallery";
 import { downloads, intro, products } from "@/lib/site-data";
 
 export function generateStaticParams() {
@@ -74,23 +76,13 @@ export default async function ProductDetails({ params }: { params: Promise<{ slu
 
       <section className="container section-gap detail-panel">
         <h2>Media Gallery</h2>
-        <div className="media-grid">
-          {product.images.map((image, index) => (
-            <a key={`${product.slug}-${index}`} href={encodeURI(image)} target="_blank" rel="noreferrer">
-              <img src={encodeURI(image)} alt={`${product.title} image ${index + 1}`} />
-            </a>
-          ))}
-        </div>
+        <ImageModalGallery images={product.images} altLabel={product.title} />
       </section>
 
       {product.videos && product.videos.length > 0 ? (
         <section className="container section-gap detail-panel">
           <h2>Product Videos</h2>
-          <div className="video-grid">
-            {product.videos.map((video) => (
-              <iframe key={video} src={video} title={`${product.title} video`} allowFullScreen />
-            ))}
-          </div>
+          <VideoModalGallery videos={product.videos} productTitle={product.title} />
         </section>
       ) : null}
 

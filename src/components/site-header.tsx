@@ -1,7 +1,30 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 import { company, navItems } from "@/lib/site-data";
 
 export function SiteHeader() {
+  const pathname = usePathname();
+  const mobileNavRef = useRef<HTMLDetailsElement>(null);
+
+  const closeMobileMenu = () => {
+    if (mobileNavRef.current?.open) {
+      mobileNavRef.current.open = false;
+    }
+  };
+
+  useEffect(() => {
+    closeMobileMenu();
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => closeMobileMenu();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <header className="site-header">
       <div className="container header-main">
@@ -30,15 +53,17 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        <details className="mobile-nav">
+        <details className="mobile-nav" ref={mobileNavRef}>
           <summary>Menu</summary>
           <div className="mobile-links">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
+              <Link key={item.href} href={item.href} onClick={closeMobileMenu}>
                 {item.label}
               </Link>
             ))}
-            <a href={`tel:${company.phoneRaw}`}>{company.phoneDisplay}</a>
+            <a href={`tel:${company.phoneRaw}`} onClick={closeMobileMenu}>
+              {company.phoneDisplay}
+            </a>
           </div>
         </details>
       </div>

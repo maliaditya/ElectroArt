@@ -1,3 +1,4 @@
+import { ImageModalGallery } from "@/components/image-modal-gallery";
 import { galleryImages } from "@/lib/site-data";
 
 export default function GalleryPage() {
@@ -10,22 +11,7 @@ export default function GalleryPage() {
       </section>
 
       <section className="container section-gap">
-        <div className="mosaic-grid">
-          {galleryImages.map((image, index) => {
-            const tileClass = index % 9 === 0 ? "tile-large" : index % 5 === 0 ? "tile-wide" : "";
-            return (
-              <a
-                key={`${image}-${index}`}
-                className={`mosaic-tile ${tileClass}`.trim()}
-                href={encodeURI(image)}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src={encodeURI(image)} alt={`Gallery image ${index + 1}`} />
-              </a>
-            );
-          })}
-        </div>
+        <ImageModalGallery images={galleryImages} altLabel="Gallery" layout="mosaic" />
       </section>
     </main>
   );
