@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #070b16;
-  --bg-mid: #0c1222;
-  --bg-deep: #121a2f;
-  --spot-a: rgba(255, 122, 30, 0.2);
-  --spot-b: rgba(40, 170, 255, 0.16);
-  --text: #edf3ff;
-  --muted: #9baecf;
-  --card: #121a2d;
-  --card-soft: #17233e;
-  --line: #273755;
-  --brand: #ff8a3d;
-  --brand-strong: #ff6f1f;
-  --brand-soft: #2b1f17;
-  --teal: #63d9d9;
-  --navy: #1e355a;
-  --shadow: 0 24px 44px rgba(0, 0, 0, 0.45);
+  --bg: #0f0d0b;
+  --bg-mid: #15120f;
+  --bg-deep: #1d1813;
+  --spot-a: rgba(242, 138, 58, 0.22);
+  --spot-b: rgba(214, 166, 112, 0.16);
+  --text: #f6efe6;
+  --muted: #b8a592;
+  --card: #1e1813;
+  --card-soft: #271f19;
+  --line: #3a2f27;
+  --brand: #f28a3a;
+  --brand-strong: #e77124;
+  --brand-soft: #322218;
+  --teal: #e5bd80;
+  --navy: #5f412a;
+  --shadow: 0 24px 44px rgba(0, 0, 0, 0.5);
   --radius-xl: 1.4rem;
   --radius-lg: 1.05rem;
 }
@@ -47,8 +47,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(130, 162, 214, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(130, 162, 214, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(193, 154, 111, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(193, 154, 111, 0.08) 1px, transparent 1px);
   background-size: 34px 34px;
   opacity: 0.3;
   z-index: -1;
@@ -156,7 +156,7 @@ p {
   top: 0;
   z-index: 70;
   border-bottom: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-  background: color-mix(in srgb, var(--bg) 82%, #121b2f 18%);
+  background: color-mix(in srgb, var(--bg) 82%, #241b14 18%);
   backdrop-filter: blur(14px);
 }
 
@@ -219,7 +219,7 @@ p {
 }
 
 .nav-link:hover {
-  background: color-mix(in srgb, var(--card) 78%, #1e2c49);
+  background: color-mix(in srgb, var(--card) 78%, #30261e);
   color: var(--text);
   border-color: var(--line);
   transform: translateY(-1px);
@@ -235,7 +235,7 @@ p {
   padding: 0.46rem 0.7rem;
   border-radius: 0.68rem;
   border: 1px solid var(--line);
-  background: color-mix(in srgb, var(--card) 80%, #1a2743);
+  background: color-mix(in srgb, var(--card) 80%, #2d241c);
   color: var(--muted);
   font-size: 0.82rem;
   font-weight: 600;
@@ -253,7 +253,7 @@ p {
 }
 
 .hero-copy {
-  background: linear-gradient(165deg, color-mix(in srgb, var(--card) 92%, #1c2a45) 0%, #101a2f 100%);
+  background: linear-gradient(165deg, color-mix(in srgb, var(--card) 92%, #31261e) 0%, #16120e 100%);
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   padding: 1.45rem;
@@ -305,7 +305,7 @@ p {
 .hero-stats article {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: linear-gradient(160deg, #17253f, #121f35);
+  background: linear-gradient(160deg, #2b221b, #221a15);
   padding: 0.72rem;
 }
 
@@ -333,8 +333,8 @@ p {
   grid-template-rows: auto 1fr auto;
   gap: 0.72rem;
   background:
-    radial-gradient(circle at 16% 8%, rgba(255, 156, 96, 0.2), transparent 32%),
-    linear-gradient(160deg, #101f38, #1a3358);
+    radial-gradient(circle at 16% 8%, rgba(242, 150, 84, 0.22), transparent 34%),
+    linear-gradient(160deg, #21170f, #302217);
 }
 
 .hero-radar-head {
@@ -342,7 +342,7 @@ p {
   justify-content: space-between;
   align-items: baseline;
   gap: 0.6rem;
-  color: #dce8f7;
+  color: #f3e3d3;
 }
 
 .hero-radar-head p {
@@ -353,7 +353,7 @@ p {
 
 .hero-radar-head span {
   font-size: 0.78rem;
-  color: #b8c9dd;
+  color: #d8bfa3;
 }
 
 .hero-radar-grid {
@@ -368,7 +368,7 @@ p {
   border-radius: var(--radius-lg);
   min-height: 162px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background: #0f2743;
+  background: #2a1f16;
   transition: transform 220ms ease, border-color 220ms ease;
 }
 
@@ -389,7 +389,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(7, 18, 35, 0.94), rgba(7, 18, 35, 0.26));
+  background: linear-gradient(to top, rgba(14, 9, 6, 0.94), rgba(14, 9, 6, 0.26));
 }
 
 .radar-copy {
@@ -398,7 +398,7 @@ p {
   right: 0.65rem;
   bottom: 0.58rem;
   z-index: 1;
-  color: #eef4ff;
+  color: #fdf0e2;
   display: grid;
   gap: 0.18rem;
 }
@@ -410,7 +410,7 @@ p {
 
 .radar-copy small {
   font-size: 0.72rem;
-  color: #d3e0f0;
+  color: #dec8b2;
 }
 
 .hero-radar-actions {
@@ -423,7 +423,7 @@ p {
   border-radius: 0.68rem;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(255, 255, 255, 0.09);
-  color: #eff5ff;
+  color: #f8ebdf;
   font-size: 0.76rem;
   font-weight: 600;
   padding: 0.45rem 0.68rem;
@@ -442,8 +442,8 @@ p {
   right: 0.9rem;
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(15, 29, 51, 0.78);
-  color: #eef4ff;
+  background: rgba(35, 24, 15, 0.78);
+  color: #f8eddf;
   padding: 0.8rem;
   backdrop-filter: blur(8px);
 }
@@ -508,7 +508,7 @@ p {
 
 .explorer-shell {
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, #121f35, #152541);
+  background: linear-gradient(180deg, #221a14, #2b221b);
   border-radius: var(--radius-xl);
   padding: 1.1rem;
   box-shadow: var(--shadow);
@@ -532,7 +532,7 @@ p {
 
 .view-switch {
   display: inline-flex;
-  background: color-mix(in srgb, var(--card) 82%, #15243f);
+  background: color-mix(in srgb, var(--card) 82%, #2d241c);
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0.2rem;
@@ -732,8 +732,8 @@ p {
 .process-board {
   border-radius: var(--radius-xl);
   border: 1px solid var(--line);
-  background: linear-gradient(150deg, #182e4f, #1f3c66);
-  color: #e7eef8;
+  background: linear-gradient(150deg, #2b2018, #3b2b1f);
+  color: #f7eadb;
   padding: 1.18rem;
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -746,7 +746,7 @@ p {
 }
 
 .process-board p {
-  color: #bfd1e7;
+  color: #d7c0a6;
   margin-top: 0.5rem;
 }
 
@@ -772,7 +772,7 @@ p {
 }
 
 .process-board span {
-  color: #d7e3f2;
+  color: #dcc8b2;
   font-size: 0.88rem;
 }
 
@@ -811,7 +811,7 @@ p {
   margin-top: 1.6rem;
   border-radius: var(--radius-xl);
   border: 1px solid var(--line);
-  background: linear-gradient(145deg, #14233d, #1a2c4d);
+  background: linear-gradient(145deg, #281d16, #34271e);
   box-shadow: var(--shadow);
   padding: 1.25rem;
   position: relative;
@@ -826,7 +826,7 @@ p {
   right: -80px;
   top: -100px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(106, 230, 230, 0.14) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(233, 179, 112, 0.16) 0%, transparent 72%);
   pointer-events: none;
 }
 
@@ -851,7 +851,7 @@ p {
 .badge-row a {
   border-radius: 0.62rem;
   border: 1px solid var(--line);
-  background: color-mix(in srgb, var(--card) 84%, #1d2d4a);
+  background: color-mix(in srgb, var(--card) 84%, #31261f);
   font-size: 0.82rem;
   padding: 0.45rem 0.75rem;
   color: var(--muted);
@@ -917,7 +917,7 @@ p {
 .detail-metrics article {
   border-radius: 0.85rem;
   border: 1px solid var(--line);
-  background: color-mix(in srgb, var(--card) 88%, #1a2a48);
+  background: color-mix(in srgb, var(--card) 88%, #31261f);
   padding: 0.62rem;
 }
 
@@ -1207,7 +1207,7 @@ p {
   border: 1px solid var(--line);
   border-radius: 0.75rem;
   padding: 0.62rem 0.68rem;
-  background: color-mix(in srgb, var(--card) 88%, #1a2a45);
+  background: color-mix(in srgb, var(--card) 88%, #2d241c);
   font-size: 0.94rem;
   font-family: inherit;
   color: var(--text);
@@ -1215,9 +1215,9 @@ p {
 
 .site-footer {
   margin-top: 2.2rem;
-  background: linear-gradient(180deg, #0e1b31 0%, #081325 100%);
-  color: #d4deec;
-  border-top: 1px solid #223551;
+  background: linear-gradient(180deg, #19130f 0%, #120d09 100%);
+  color: #d9c4ad;
+  border-top: 1px solid #3b2d21;
 }
 
 .footer-grid {
@@ -1239,7 +1239,7 @@ p {
 }
 
 .footer-block p {
-  color: #c4d2e3;
+  color: #d6bfa7;
   margin-bottom: 0.45rem;
 }
 
@@ -1257,7 +1257,7 @@ p {
 
 .footer-bottom p {
   font-size: 0.84rem;
-  color: #a9bfd7;
+  color: #bfa68d;
 }
 
 @keyframes revealUp {

@@ -66,7 +66,7 @@ export default function Home() {
             </Link>
 
             <Link href="/trolleys" className="radar-card">
-              <img src="/img/product/trolleys/13.JPG" alt="Trolleys" />
+              <img src="/img/product/trolleys/13.jpg" alt="Trolleys" />
               <div className="radar-copy">
                 <strong>Trolleys</strong>
                 <small>Medical movement systems</small>
